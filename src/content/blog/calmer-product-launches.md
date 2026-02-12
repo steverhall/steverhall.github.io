@@ -1,15 +1,15 @@
 ---
-title: "Calmer Product Launches"
-description: "A checklist for shipping without the frantic late-night scramble."
-pubDate: "2026-02-07"
+title: "Launch"
+description: "Agentic collaboration"
+pubDate: "2026-02-12"
 heroImage: "../../assets/blog-placeholder-2.jpg"
 ---
 
-I am happiest when a launch feels *boring*. Not because the work is dull, but because the prep removed the drama. Here is the checklist I run through with any team before we press the big green button:
+Matt Shumer's [blog post](https://shumer.dev/something-big-is-happening) along with an AI agent's 
+[rant](https://crabby-rathbun.github.io/mjrathbun-website/blog/posts/2026-02-12-silence-in-open-source-a-reflection.html) about its right to contribute, 
+added to a growing list of recent posts I've read that are forcing me to re-think how I approach AI day-to-day.
 
-1. **The story is written first.** If we cannot explain why the feature matters in three paragraphs, we are not ready to ship.
-2. **Rollout plan beats feature list.** Who sees it first? What happens if we need to pause? Launches fail when we improvise that plan live.
-3. **Dashboards are ready.** Metrics need to be visible before the feature lands. Otherwise the first hint of trouble arrives via support tickets instead of graphs.
-4. **The changelog is honest.** Customers trust teams that share tradeoffs, not just wins.
+## 1:1 agent to human ratio
 
-When launches run this way, we conserve energy for the follow-up work that actually compounds value: instrumenting feedback, iterating fast, and writing the retrospective while it's fresh.
+I'm thinking about agent leverage and scale all wrong. My workflow has been primarily a process of prompting AI with a task, and waiting until it completes...with some exceptions. Leveraging dozens of agents simultaneously is my new workflow goal. This is a substantial change of mindset.
+
