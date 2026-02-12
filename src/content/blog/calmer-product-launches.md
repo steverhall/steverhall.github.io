@@ -13,3 +13,12 @@ added to a growing list of recent posts I've read that are forcing me to re-thin
 
 I'm thinking about agent leverage and scale all wrong. My workflow has been primarily a process of prompting AI with a task, and waiting until it completes...with some exceptions. Leveraging dozens of agents simultaneously is my new workflow goal. This is a substantial change of mindset.
 
+## Agent history
+
+How something was created needs documentation. Capturing agent activity for both refinement and future context is critically necessary.
+
+## Self hosting
+
+I need a way of hosting services created by AI, even temporary ones, that are lightweight, secure, and simple to stand-up and tear down. There are numerous services that I need once in very great while, and certainly can't justify paying for them. 
+So, I end up using a disabled free-tier, or some ad-supported monstrosity. With a couple dollars of tokens, some of these could be created on the fly, used, and put on the shelf.
+
