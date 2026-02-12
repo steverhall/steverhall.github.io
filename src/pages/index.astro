@@ -1,48 +1,187 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 2rem;
+				align-items: center;
+				margin-bottom: 4rem;
+			}
+			.hero h1 {
+				font-size: clamp(2.5rem, 5vw, 3.75rem);
+				margin-bottom: 1rem;
+			}
+			.hero p {
+				margin-bottom: 1.25rem;
+			}
+			.hero .card {
+				background: white;
+				padding: 1.5rem;
+				border-radius: 16px;
+				box-shadow: var(--box-shadow);
+			}
+			.hero .card ul {
+				list-style: none;
+				padding: 0;
+				margin: 1rem 0 0 0;
+				display: flex;
+				flex-direction: column;
+				gap: 0.35rem;
+			}
+			.actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+			}
+			.actions a {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.35rem;
+				padding: 0.75rem 1.4rem;
+				border-radius: 999px;
+				font-weight: 600;
+				text-decoration: none;
+			}
+			.actions a.primary {
+				background: var(--accent);
+				color: white;
+			}
+			.actions a.secondary {
+				border: 1px solid rgba(var(--black), 0.15);
+				color: rgb(var(--black));
+			}
+			.pillars {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 1.5rem;
+				margin-bottom: 4rem;
+			}
+			.pillar {
+				background: rgba(255, 255, 255, 0.8);
+				border: 1px solid rgba(var(--black), 0.05);
+				border-radius: 12px;
+				padding: 1.25rem;
+			}
+			.pillar h3 {
+				font-size: 1.15rem;
+				margin-bottom: 0.35rem;
+			}
+			.latest h2 {
+				margin-bottom: 1rem;
+			}
+			.post-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+				gap: 1.5rem;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.post-grid li {
+				background: white;
+				border-radius: 12px;
+				padding: 1.25rem;
+				box-shadow: var(--box-shadow);
+			}
+			.post-grid a {
+				text-decoration: none;
+				color: inherit;
+				display: block;
+			}
+			.post-grid h3 {
+				margin-top: 0.5rem;
+				font-size: 1.35rem;
+			}
+			.post-grid p {
+				margin-bottom: 0;
+			}
+			.eyebrow {
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				font-size: 0.8rem;
+				color: rgb(var(--gray));
+				margin-bottom: 0.35rem;
+			}
+			@media (max-width: 720px) {
+				.actions {
+					flex-direction: column;
+				}
+				.post-grid li,
+				.hero .card {
+					box-shadow: none;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<div>
+					<p class="eyebrow">Steve Hall · software + product</p>
+					<h1>Building calm, intentional software—and documenting the process.</h1>
+					<p>
+						I work at the seams between engineering and product strategy. This space is a running log of
+						the systems I'm shaping, the experiments I'm running, and the lessons that stick.
+					</p>
+					<div class="actions">
+						<a class="primary" href="/blog">Read the blog</a>
+						<a class="secondary" href="/about">About Steve</a>
+					</div>
+				</div>
+				<div class="card">
+					<h3>Now</h3>
+					<ul>
+						<li>Designing lightweight engineering rituals for a hybrid team.</li>
+						<li>Building this site in Astro + GitHub Pages.</li>
+						<li>Writing about practical ways to ship without drama.</li>
+					</ul>
+				</div>
+			</section>
+			<section class="pillars">
+				<div class="pillar">
+					<h3>Product strategy</h3>
+					<p>Working from the narrative outward so features arrive with a point of view.</p>
+				</div>
+				<div class="pillar">
+					<h3>Engineering systems</h3>
+					<p>Investing in boring, observable infrastructure that lets teams stay calm.</p>
+				</div>
+				<div class="pillar">
+					<h3>Writing things down</h3>
+					<p>Sharing the playbooks, retro notes, and frameworks in the open.</p>
+				</div>
+			</section>
+			<section class="latest">
+				<h2>Latest posts</h2>
+				<ul class="post-grid">
+					{posts.map((post) => (
+						<li>
+							<a href={`/blog/${post.slug}/`}>
+								<p class="eyebrow"><FormattedDate date={post.data.pubDate} /></p>
+								<h3>{post.data.title}</h3>
+								<p>{post.data.description}</p>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>

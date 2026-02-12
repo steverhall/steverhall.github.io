@@ -52,6 +52,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			.comments {
+				margin-top: 3rem;
+				padding-top: 2rem;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.comments h2 {
+				margin-bottom: 0.35rem;
+			}
+			.comments p {
+				margin-top: 0;
+			}
 		</style>
 	</head>
 
@@ -78,6 +89,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<hr />
 					</div>
 					<slot />
+					<section class="comments" aria-label="Comments">
+						<h2>Join the conversation</h2>
+						<p>
+							Comments are powered by <a href="https://utteranc.es" target="_blank">Utterances</a>
+							and map directly to GitHub issues inside this repository.
+						</p>
+						<script
+							src="https://utteranc.es/client.js"
+							repo="steverhall/steverhall.github.io"
+							issue-term="pathname"
+							label="comments"
+							theme="github-light"
+							crossorigin="anonymous"
+							async
+						></script>
+					</section>
 				</div>
 			</article>
 		</main>
